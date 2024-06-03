@@ -9,7 +9,6 @@ const Cart = () => {
   const totalPrice = cartProducts.reduce((acc, product) => {
     return acc + product.price;
   }, 0);
-  console.log(totalPrice);
   return (
     <div className='bg-gray-100 h-screen py-8'>
       <div className='container mx-auto px-4'>
@@ -33,7 +32,7 @@ const Cart = () => {
               <h2 className='text-lg font-semibold mb-4'>Summary</h2>
               <div className='flex justify-between mb-2'>
                 <span>Subtotal</span>
-                <span>${totalPrice}</span>
+                <span>${Number(totalPrice).toFixed(2)}</span>
               </div>
               <div className='flex justify-between mb-2'>
                 <span>Taxes</span>
@@ -46,7 +45,9 @@ const Cart = () => {
               <hr className='my-2' />
               <div className='flex justify-between mb-2'>
                 <span className='font-semibold'>Total</span>
-                <span className='font-semibold'>${totalPrice + 1.99}</span>
+                <span className='font-semibold'>
+                  ${eval(totalPrice + 1.99).toFixed(2)}
+                </span>
               </div>
               <button className='bg-blue-500 text-white py-2 px-4 rounded-lg mt-4 w-full'>
                 Checkout

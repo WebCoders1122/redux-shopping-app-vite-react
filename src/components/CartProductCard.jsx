@@ -1,6 +1,10 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "../features/cart/cartSlice";
 
 const CartProductCard = ({ product }) => {
+  const dispatch = useDispatch();
+
   return (
     <div className=''>
       <div className='bg-white rounded-lg shadow-md p-6 mb-4'>
@@ -38,6 +42,15 @@ const CartProductCard = ({ product }) => {
                 </div>
               </td>
               <td className='py-4'>${product.price}</td>
+              <td className='py-4'>
+                <button
+                  onMouseDown={() => {
+                    dispatch(removeFromCart(product));
+                  }}
+                  className='bg-red-500 text-white font-bold mx-2 py-1 px-2.5 rounded-lg w-full'>
+                  Remove
+                </button>
+              </td>
             </tr>
             {/* More product rows */}
           </tbody>
